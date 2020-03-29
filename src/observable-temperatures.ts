@@ -1,5 +1,3 @@
-import { interval, Observable, Subscriber } from 'rxjs';
-import { publish, refCount } from 'rxjs/operators';
 import { createColdObservable, createHotObservable, createWarmObservable } from './utility';
 
 const demonstrateColdObservable = () => {

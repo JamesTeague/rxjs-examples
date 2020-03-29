@@ -6,7 +6,8 @@
   ],
   "rules": {
     "no-unused-variable": false,
-
+    "no-console": false,
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }

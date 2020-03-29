@@ -1,5 +1,5 @@
-import { createColdObservable, createHotObservable, createObserver } from './utility';
 import { take } from 'rxjs/operators';
+import { createColdObservable, createHotObservable, createObserver } from './utility';
 
 const demonstrateUnicast = () => {
   const unicast$ = createColdObservable();

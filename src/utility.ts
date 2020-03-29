@@ -2,8 +2,9 @@ import { interval, Observable, Observer, Subscriber } from 'rxjs';
 import { publish, refCount } from 'rxjs/operators';
 
 export const createHotObservable = () => {
-  let observers: Subscriber<any>[] = [];
   let tick = 0;
+  const observers: Array<Subscriber<any>> = [];
+
   setInterval(() => {
     tick++;
     observers.forEach( o => o.next(tick));
@@ -13,8 +14,8 @@ export const createHotObservable = () => {
     observers.push(observer);
 
     return () => {
-      let i = observers.indexOf(observer);
-      observers.splice( i, 1 );
+      const i = observers.indexOf(observer);
+      observers.splice(i, 1);
     }
   });
 };
