@@ -1,5 +1,9 @@
 import { take } from 'rxjs/operators';
-import { createColdObservable, createHotObservable, createObserver } from './utility';
+import {
+  createColdObservable,
+  createHotObservable,
+  createObserver
+} from './utility';
 
 const demonstrateUnicast = () => {
   const unicast$ = createColdObservable();
@@ -16,7 +20,7 @@ const demonstrateMulticast = () => {
 
   setTimeout(() => {
     subscriber1.unsubscribe();
-  }, 1000)
+  }, 1000);
 };
 
 const makeColdObservableHot = () => {
