@@ -1,4 +1,5 @@
-import { take } from 'rxjs/operators';
+import { ConnectableObservable, Observable } from 'rxjs';
+import { publish, take } from 'rxjs/operators';
 import {
   createColdObservable,
   createHotObservable,
@@ -23,8 +24,30 @@ const demonstrateMulticast = () => {
   }, 1000);
 };
 
-const makeColdObservableHot = () => {
-  // TODO - Live Demo
+const makeHotByExtractingProducer = () => {
+  // Cold implementation
+  // const observable$ = new Observable(observer => {
+  //   observer.next(Math.random());
+  // });
+
+  // Turned hot
+  const random = Math.random();
+  const observable$ = new Observable(observer => {
+    observer.next(random)
+  });
+
+  observable$.subscribe(createObserver('1'));
+  observable$.subscribe(createObserver('2'));
 };
 
-demonstrateUnicast();
+const makeHotByPublish = () => {
+  const cold$ = createColdObservable();
+
+  const hot$ = cold$.pipe(publish()) as ConnectableObservable<any>;
+
+  hot$.subscribe(createObserver('1'));
+  hot$.subscribe(createObserver('2'));
+
+  // Connecting subscribes to inner Subscription, starting emissions of hot$
+  hot$.connect();
+};
