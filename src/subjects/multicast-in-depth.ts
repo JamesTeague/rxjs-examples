@@ -1,6 +1,6 @@
 import { ConnectableObservable, defer, Observable, of, Subject } from 'rxjs';
-import { createObserver } from '../utility';
 import { multicast } from 'rxjs/operators';
+import { createObserver } from '../utility';
 
 const factory$ = defer(() => of(Math.random()));
 
