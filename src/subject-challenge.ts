@@ -1,4 +1,4 @@
-import { Observable, Observer, Subscriber } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 
 export default class Notifier {
   private readonly subscribers: Map<string, Array<Subscriber<any>>>;

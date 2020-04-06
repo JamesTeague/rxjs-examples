@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import Notifier from './subject-challenge';
 
 describe('Notifier', () => {
