@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { createColdObservable, createObserver } from './utility';
+import { createColdObservable, createObserver } from '../utility';
 
 const demonstrateSubjectAsObservable = () => {
   const subject = new Subject();

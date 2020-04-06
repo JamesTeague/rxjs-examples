@@ -1,5 +1,5 @@
 import { AsyncSubject, BehaviorSubject, ReplaySubject } from 'rxjs';
-import { createObserver } from './utility';
+import { createObserver } from '../utility';
 
 const demonstrateBehaviorSubject = () => {
   const subject = new BehaviorSubject(26);

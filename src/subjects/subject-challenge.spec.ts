@@ -2,27 +2,27 @@ import { Observable } from 'rxjs';
 import Notifier from './subject-challenge';
 
 describe('Notifier', () => {
-  let memoryNotifier;
+  let notifier;
 
   beforeEach(() => {
-    memoryNotifier = new Notifier();
+    notifier = new Notifier();
   });
 
   it('returns a new observable', () => {
-    const observable$ = memoryNotifier.topic('test');
+    const observable$ = notifier.topic('test');
 
     expect(observable$).toBeInstanceOf(Observable);
   });
 
   it('emits a message to the subscriber', done => {
-    const observable$ = memoryNotifier.topic('test');
+    const observable$ = notifier.topic('test');
 
     observable$.subscribe(data => {
       expect(data).toEqual({ payload: 'test' });
       done();
     });
 
-    memoryNotifier.broadcast('test', { payload: 'test' });
+    notifier.broadcast('test', { payload: 'test' });
   });
 
   it('is multicasted', done => {
@@ -41,11 +41,11 @@ describe('Notifier', () => {
       }
     };
 
-    const observable$ = memoryNotifier.topic('test');
+    const observable$ = notifier.topic('test');
 
     observable$.subscribe(recordData);
     observable$.subscribe(recordData);
 
-    memoryNotifier.broadcast('test', { payload: 'test' });
+    notifier.broadcast('test', { payload: 'test' });
   });
 });
