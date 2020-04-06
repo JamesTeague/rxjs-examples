@@ -37,7 +37,3 @@ export default class Notifier {
     }
   }
 }
-
-const notifier = new Notifier();
-
-notifier.topic('Challenge');
